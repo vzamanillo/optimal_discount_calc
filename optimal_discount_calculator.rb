@@ -16,13 +16,8 @@ class OptimalDiscountCalculator
   Result = Struct.new(:license_set, :set_discount, :license_discount,
                       :license_price, :final_set_price)
 
-  def initialize(_license_set)
-    @license_set = [License.new('Service One', 1),
-                    License.new('Service Two', 2),
-                    License.new('Service Three', 2),
-                    License.new('Service Four', 2),
-                    License.new('Service Five', 2),
-                    License.new('Service Six', 1)]
+  def initialize(license_set)
+    @license_set = license_set
 
     raise ArgumentError, 'Empty license set' if @license_set.nil? || @license_set.empty?
   end
@@ -40,6 +35,8 @@ class OptimalDiscountCalculator
     results.min_by(&:final_set_price)
   end
 
+  private
+
   # Returns all possible license combinations
   def combinations
     @combinations ||= begin
@@ -49,17 +46,6 @@ class OptimalDiscountCalculator
       end
       comb
     end
-  end
-
-  # Returns a hashmap grouped by license quantity
-  # e.g:
-  #
-  # {
-  #   1 => %i[service_one service_six],
-  #   2 => %i[service_two service_three service_four service_five]
-  # }
-  def group_by_quantity
-    @group_by_quantity ||= license_set.keys.group_by { |key| license_set[key] }
   end
 
   def license_count
