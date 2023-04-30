@@ -10,8 +10,8 @@ Ruby 2.3+
 
 Clone the repo, then install the project requirements with
 
-`optional_discount_calc $ bundle install`
+`optimal_discount_calc $ bundle install`
 
 To run the test
 
-`optional_discount_calc $ rspec`
+`optimal_discount_calc $ rspec`
