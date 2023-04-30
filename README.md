@@ -1,4 +1,4 @@
-# optional_discount_calc
+# Optimal discount calculator
 
 Calculate the best discount in a license set
 
